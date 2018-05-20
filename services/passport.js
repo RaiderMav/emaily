@@ -15,17 +15,20 @@ passport.deserializeUser((id, done) => {
     })
 })
 
-passport.use(new GoogleStrategy({
-  clientID: keys.googleClientID,
-  clientSecret: keys.googleClientSecret,
-  callbackURL: '/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => {
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback',
+      proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
   // console.log('access token', accessToken)
   // console.log('refresh token', refreshToken)
   // console.log('profile', profile)
-  User.findOne({
-    googleId: profile.id
-  })
+      User.findOne({
+        googleId: profile.id
+      })
   .then(existingUser => {
     if (existingUser) {
       done(null, existingUser)
@@ -35,4 +38,4 @@ passport.use(new GoogleStrategy({
       .then(user => done(null, user))
     }
   })
-}))
+    }))
