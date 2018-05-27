@@ -1,4 +1,3 @@
-// @flow
 
 const express = require('express'),
   port = process.env.PORT || 5000,
