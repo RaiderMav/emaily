@@ -38,6 +38,4 @@ if (process.env.NODE_ENV === 'production') {
 require('./routes/authRoutes')(app)
 require('./routes/billingRoutes')(app)
 
-app.listen(port, () => {
-  console.log(`Server listening on port:${port}`)
-})
+app.listen(port)
