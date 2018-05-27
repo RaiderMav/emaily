@@ -14,11 +14,11 @@ class Header extends Component {
                 </li>
             default:
             return (
-                <Fragment>
-                <li style={{margin:'0 10px'}}>{this.props.auth.credits} Credits</li>
-                <li><Payments/></li>
-                <li><a href="/api/logout">Logout</a></li>
-           </Fragment>
+               [<li style={{margin:'0 10px'}}>{this.props.auth.credits} Credits</li>,
+                <li><Payments/></li>,
+                <li><a href="/api/logout">Logout</a></li>]
+                
+        
            )
         }
     }
