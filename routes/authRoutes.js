@@ -18,6 +18,7 @@ module.exports = app => {
   app.get(
     '/api/logout',
      (req, res) => {
+       console.log(req.user)
        req.logout()
        res.redirect('/')
      })
@@ -25,6 +26,7 @@ module.exports = app => {
   app.get(
     '/api/current_user',
     (req, res) => {
+      console.log(req.user)
       res.send(req.user)
     // res.send(req.session)
     })
