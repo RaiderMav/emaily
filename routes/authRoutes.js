@@ -19,6 +19,7 @@ module.exports = app => {
     '/api/logout',
      (req, res) => {
        req.logout()
+       res.send({message: `Successfully logged out`})
        res.redirect('/')
      })
 
