@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom'
 import Payments from './Payments'
 
 class Header extends Component {
-  renderContent =()=> {
-    console.log(this.props)
+  renderContent = () => {
     switch (this.props.auth) {
       case null:
         return ``
