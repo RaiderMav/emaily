@@ -23,9 +23,6 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-require('./routes/authRoutes')(app)
-require('./routes/billingRoutes')(app)
-
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
     // Like our main.js file, or main.css!
@@ -38,5 +35,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 }
+
+require('./routes/authRoutes')(app)
+require('./routes/billingRoutes')(app)
 
 app.listen(port)
