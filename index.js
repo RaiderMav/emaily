@@ -1,6 +1,6 @@
 
 const express = require('express'),
-  port = process.env.PORT || 4000,
+  port = process.env.PORT || 5000,
   mongoose = require('mongoose'),
   keys = require('./config/keys'),
   cookieSession = require('cookie-session'),
