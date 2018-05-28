@@ -4,9 +4,8 @@ import {Link} from 'react-router-dom'
 import Payments from './Payments'
 
 class Header extends Component {
-  renderContent () {
-    const {credits} = this.props.auth
-    switch (this.props.auth) {
+  renderContent =()=> {
+    switch (props.auth) {
       case null:
         return ``
       case false:
@@ -15,7 +14,7 @@ class Header extends Component {
         </li>
       default:
         return (
-          [<li key='1' style={{margin: '0 10px'}}>Credits:{credits}</li>,
+          [<li key='1' style={{margin: '0 10px'}}>Credits:{props.auth.credits}</li>,
             <li key='2'><Payments /></li>,
             <li key='3'><a href='/api/logout'>Logout</a></li>]
 
