@@ -1,17 +1,18 @@
 
 const express = require('express'),
-  port = process.env.PORT || 5000,
   mongoose = require('mongoose'),
-  keys = require('./config/keys'),
   cookieSession = require('cookie-session'),
   passport = require('passport'),
   bodyParser = require('body-parser'),
-  app = express()
+  keys = require('./config/keys')
 
 require('./models/user')
 
 require('./services/passport')
 mongoose.connect(keys.mongoURI)
+
+const port = process.env.PORT || 5000,
+  app = express()
 
 app.use(bodyParser.json())
 
@@ -22,6 +23,9 @@ app.use(cookieSession({
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+require('./routes/authRoutes')(app)
+require('./routes/billingRoutes')(app)
 
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
@@ -35,8 +39,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 }
-
-require('./routes/authRoutes')(app)
-require('./routes/billingRoutes')(app)
 
 app.listen(port)
