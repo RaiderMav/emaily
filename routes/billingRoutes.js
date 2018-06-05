@@ -10,14 +10,10 @@ module.exports = app => {
       description: '$5 for 5 credits',
       source: req.body.id
     })
-    if (!charge) {
-      res.send({error: `error`})
-    }
+
     req.user.credits += 5
     const user = await req.user.save()
-    if (!user) {
-      res.send({error: `Error`})
-    }
+
     res.send(user)
   })
 }
