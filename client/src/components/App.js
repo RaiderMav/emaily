@@ -1,12 +1,13 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
 import Header from './Header'
 import Landing from './Landing'
 import Dashboard from './Dashboard'
+import SurveyNew from './surveys/SurveyNew'
 
-const  SurveyNew = () => <h2>SurveyNew</h2>
+
 
 class App extends Component {
     componentDidMount=()=> {
@@ -14,7 +15,7 @@ class App extends Component {
     }
   render () {
     return (
-      <Fragment>
+      <div className="container">
         <BrowserRouter>
           <div>
             <Header />
@@ -31,7 +32,7 @@ class App extends Component {
               component={SurveyNew} />
           </div>
         </BrowserRouter>
-      </Fragment>
+      </div>
     )
   }
 }
